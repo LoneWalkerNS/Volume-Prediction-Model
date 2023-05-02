@@ -1,5 +1,7 @@
-# Model-Gradient-Boosting-Regressor
-Gradient Boosting Regressor Model for Calculations
+# Volume-Prediction Model
+
+Model.py Explanation:-
+I have created a machine learning model to use an ensemble of models to analyse historical volumes and assign weights to each of the models before using the same to predict the average traded volumes on a daily basis. The weigths are updated every day based on the acutal volumes traded.
 
 Source Problem - https://github.com/RiskThinking/work-samples/blob/main/Data-Engineer.md 
 
