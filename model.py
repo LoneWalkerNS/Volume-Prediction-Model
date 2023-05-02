@@ -6,6 +6,7 @@ from sklearn.linear_model import LinearRegression, Lasso, Ridge
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.svm import SVR
 import numpy as np
+import joblib 
 
 etf_dir = r"path"
 stock_dir = r"path"
@@ -195,3 +196,6 @@ for i in range(len(dates)):
 
     # Print results
     print(f"Date: {dates[i]}, Actual Volume: {test_y[0]}, Predicted Volume: {pred_volume}")
+
+# save the retrogressively fitted weights to a file using joblib
+joblib.dump(retrogressively_fitted_weights, 'model.pkl')
