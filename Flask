@@ -1,0 +1,27 @@
+import flask
+import joblib
+from flask import Flask, request, jsonify
+
+app = Flask(__name__)
+model = joblib.load("model.pkl")  # Load the trained model
+
+@app.route("/predict", methods=["GET"])
+def predict():
+    # Parse the query parameters
+    vol_moving_avg = request.args.get("vol_moving_avg")
+    adj_close_rolling_med = request.args.get("adj_close_rolling_med")
+
+    # Convert the parameters to the expected data types
+    vol_moving_avg = float(vol_moving_avg)
+    adj_close_rolling_med = float(adj_close_rolling_med)
+
+    # Make a prediction using the loaded model
+    prediction = model.predict([[vol_moving_avg, adj_close_rolling_med]])[0]
+
+    # Convert the prediction to an integer value and return it as a JSON response
+    return jsonify(int(prediction))
+
+if __name__ == "__main__":
+    app.run()
+    
+ # Request for local host - GET http://localhost:5000/predict?vol_moving_avg=12345&adj_close_rolling_med=25
