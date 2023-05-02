@@ -111,8 +111,8 @@ end_date = '2023-05-02'
 subset_data = data.loc[start_date:end_date]
 
 # create the X and y variables for each model
-X = subset_data.drop('target_variable', axis=1)
-y = subset_data['target_variable']
+X = subset_data.drop('target', axis=1)
+y = subset_data['target']
 
 # initialize the retrogressively_fitted_weights dictionary
 retrogressively_fitted_weights = {}
